@@ -1,6 +1,5 @@
 package core.basesyntax;
 
-import org.w3c.dom.Node;
 import java.util.Objects;
 
 public class MyHashMap<K, V> implements MyMap<K, V> {
@@ -13,9 +12,9 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     private int threshold;
 
     private static class Node<K, V> {
-        final K key;
-        V value;
-        Node<K, V> next;
+        private final K key;
+        private V value;
+        private Node<K, V> next;
 
         Node(K key, V value, Node<K, V> next) {
             this.key = key;
@@ -29,7 +28,6 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
         this.threshold = (int) (DEFAULT_CAPACITY * DEFAULT_LOAD_FACTOR);
         this.size = 0;
     }
-
 
     @Override
     public void put(K key, V value) {
@@ -69,6 +67,7 @@ public class MyHashMap<K, V> implements MyMap<K, V> {
     public int getSize() {
         return size;
     }
+
     private int getIndex(K key) {
         if (key == null) {
             return 0;
